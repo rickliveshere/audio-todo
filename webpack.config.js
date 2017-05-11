@@ -1,12 +1,18 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var DashboardPlugin = require('webpack-dashboard/plugin');
+var webpack = require('webpack');
 
 module.exports = {
-  entry: './src/js/index.js',
+  devServer: { 
+      inline: true,
+      contentBase: path.join(__dirname, "src"),
+  },
+  entry: {
+      index: './src/js/index.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
+    filename: '[name]_bundle.js'
   },
   module: {
     rules: [
@@ -18,6 +24,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new DashboardPlugin()
+    new webpack.DefinePlugin({
+        "process.env": {
+            BROWSER: JSON.stringify(true)
+        }
+    })
   ]
 };

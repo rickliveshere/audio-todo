@@ -5,6 +5,10 @@ import { createStore } from 'redux'
 import todoApp from './reducers'
 import App from './components/app'
 
+if (process.env.BROWSER) {
+  require("../css/styles.css");
+}
+
 let store = createStore(todoApp)
 
 render(
