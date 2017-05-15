@@ -3,6 +3,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var gutil = require('gulp-util');
 var del = require('del');
 var packageJson = require('./package.json');
@@ -15,6 +16,7 @@ var WebpackDevServer = require('webpack-dev-server');
 
 var DEV_DIR = 'src';
 var DIST_DIR = 'dist';
+var WEBSITE_DIR = '../ReactDemo.Web/wwwroot';
 
 function writeServiceWorkerFile(rootDir, handleFetch, callback) {
   var config = {
@@ -23,7 +25,6 @@ function writeServiceWorkerFile(rootDir, handleFetch, callback) {
     logger: gutil.log,
     staticFileGlobs: [
       rootDir + '/css/**.css',
-      rootDir + '/**.html',
       rootDir + '/images/**.*',
       rootDir + '/js/**.js'
     ],
@@ -33,14 +34,26 @@ function writeServiceWorkerFile(rootDir, handleFetch, callback) {
   swPrecache.write(path.join(rootDir, 'service-worker.js'), config, callback);
 }
 
+function compileSass(rootDir) {
+  return gulp
+    .src(DEV_DIR + '/css/*.scss')
+    .pipe(sass())
+    .pipe(gulp.dest(rootDir + '/css'));
+}
+
 gulp.task('default', ['build']);
 
 gulp.task('build', function(callback) {
-  runSequence('clean', 'webpack', 'generate-service-worker-dist', callback);
+  runSequence('clean', 'sass', 'webpack', 'generate-service-worker-dist', 'copy-dist-to-web', callback);
 });
 
 gulp.task('dev', function(callback) {
-  runSequence('clean', 'generate-service-worker-dev', 'webpack-dev-server', callback);
+  gulp.watch(DEV_DIR + '/css/*.scss', ['sass-dev']);
+  runSequence('generate-service-worker-dev', 'sass-dev', 'webpack-dev-server', callback);
+});
+
+gulp.task('copy-dist-to-web', function() {   
+    gulp.src([DIST_DIR + '/**/*', '!' + DIST_DIR + '/**/*.html',]).pipe(gulp.dest(WEBSITE_DIR));
 });
 
 gulp.task('clean', function() {
@@ -83,4 +96,13 @@ gulp.task("webpack-dev-server", function(callback) {
         // keep the server alive or continue?
         // callback();
     });
+});
+
+
+gulp.task('sass-dev', function () {
+  return compileSass(DEV_DIR);
+});
+
+gulp.task('sass', function () {
+  return compileSass(DIST_DIR);
 });

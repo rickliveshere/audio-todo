@@ -11,7 +11,7 @@ module.exports = {
       index: './src/js/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist/js'),
     filename: '[name]_bundle.js'
   },
   module: {
@@ -22,7 +22,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: '../ReactDemo.Web/Views/Shared/_Layout.cshtml'
     }),
     new webpack.DefinePlugin({
         "process.env": {

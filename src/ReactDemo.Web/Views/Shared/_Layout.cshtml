@@ -1,13 +1,18 @@
-<!doctype html>
+﻿﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Todo List</title>
+    
+    <link href='css/styles.css' media='all' rel='stylesheet' />
   </head>
   <body>
-    <h1>Todo List</h1>
-    <div id="root"></div>
+    <header>
+        <h1>Todo List</h1>
+    </header>
+    @RenderBody()
+	<script src="js/index_bundle.js"></script>
     <script src="service-worker-registration.js"></script>
   </body>
 </html>

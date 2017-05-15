@@ -37,5 +37,11 @@ jspm_packages
 .node_repl_history
 
 dist/
-src/service-worker.js
+assets/src/service-worker.js
 .DS_Store
+src/assets/src/css/*.css
+bin/
+obj/
+*.userprefs
+*.user
+src/ReactDemo.Web/wwwroot/
