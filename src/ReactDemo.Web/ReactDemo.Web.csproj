@@ -1,10 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-audio_todo-8BBAA9F8-E9EC-446E-89E3-0A12EF2CE07A</UserSecretsId>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
   <ItemGroup>
     <Folder Include="wwwroot\" />
@@ -13,13 +11,11 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
-
   <ItemGroup>
+    <PackageReference Include="LiteDB" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview1-final" />
   </ItemGroup>
-
   <Target Name="BuildAssets" BeforeTargets="Build">
     <Exec Command="gulp deploy --gulpfile ../assets/gulpfile.js" />
   </Target>
-
 </Project>
