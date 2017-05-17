@@ -18,4 +18,8 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview1-final" />
   </ItemGroup>
 
+  <Target Name="BuildAssets" BeforeTargets="Build">
+    <Exec Command="gulp deploy --gulpfile ../assets/gulpfile.js" />
+  </Target>
+
 </Project>

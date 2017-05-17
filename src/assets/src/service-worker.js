@@ -37,8 +37,8 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["index.html","f91b6aa9bfd30565e95851df4591cfee"],["js/index.js","575c635f614b000f190bfa3153045303"],["offline.html","d1026a673633f4f1216f7e11b4cb8298"]];
-var cacheName = 'sw-precache-v3-motogp-stats-' + (self.registration ? self.registration.scope : '');
+var precacheConfig = [["css/styles.css","0f0ebb55c18e6e93077830e105a613d0"],["js/app/actions/index.js","d27a4e11933fab53fe477a56792ea234"],["js/app/components/app.js","0e3d560612dc0cf5dfff9fb8e7c4867c"],["js/app/components/todo.js","9c003661da740f691de753a62361b907"],["js/app/components/todoForm.js","203de4b9a3bcf6c91a39f74944be3f34"],["js/app/components/todoList.js","ac87951635b92e83f5487fb6a74389ae"],["js/app/containers/todoFormContainer.js","c7fbd2d6edc0e47383c49454e463d306"],["js/app/containers/todoListContainer.js","c9e52cec44cf86a500b8c2ec3c9e156f"],["js/app/index.js","34d2ac5b0455eb7cb52201ddd6552e90"],["js/app/reducers/index.js","dfcffecdec1961eeaf9968b7dbf52b73"],["js/app/reducers/todos.js","38b5e56a0dfe5623e32a2abd9ca273a9"],["js/sw/service-worker-registration.js","fa64d39ee9adbe9cf15a9475a7610890"],["js/sw/service-worker-toolbox.js","5765cfdf00015277b038650a579072bb"]];
+var cacheName = 'sw-precache-v3-react-demo-' + (self.registration ? self.registration.scope : '');
 
 
 
@@ -206,4 +206,6 @@ self.addEventListener('activate', function(event) {
 
 
 
+
+importScripts("js/sw/sw-toolbox/sw-toolbox.js","js/sw/service-worker-toolbox.js");
 

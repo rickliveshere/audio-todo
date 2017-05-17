@@ -45,3 +45,4 @@ obj/
 *.userprefs
 *.user
 src/ReactDemo.Web/wwwroot/
+src/assets/src/sw/sw-toolbox/

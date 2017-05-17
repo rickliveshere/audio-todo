@@ -8,7 +8,7 @@ module.exports = {
       contentBase: path.join(__dirname, "src"),
   },
   entry: {
-      index: './src/js/index.js'
+      index: './src/js/app/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist/js'),
@@ -22,7 +22,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: '../ReactDemo.Web/Views/Shared/_Layout.cshtml'
+      template: 'src/index.html'
     }),
     new webpack.DefinePlugin({
         "process.env": {
